@@ -6,13 +6,14 @@ import (
 	"time"
 )
 
+// 在Models数组中已成功添加4个新表模型
 var Models = []interface{}{
-	&UserRole{}, &Role{}, &Menu{}, &RoleMenu{}, &Api{}, &MenuApi{}, &DictType{}, &Dict{},
+    &UserRole{}, &Role{}, &Menu{}, &RoleMenu{}, &Api{}, &MenuApi{}, &DictType{}, &Dict{},
 
-	&User{}, &UserToken{}, &Tag{}, &Article{}, &ArticleTag{}, &Comment{}, &Favorite{}, &Topic{}, &TopicNode{},
-	&TopicTag{}, &UserLike{}, &Message{}, &SysConfig{}, &Link{},
-	&UserScoreLog{}, &OperateLog{}, &EmailCode{}, &CheckIn{}, &UserFollow{}, &UserFeed{}, &UserReport{},
-	&ForbiddenWord{},
+    &User{}, &UserToken{}, &Tag{}, &Article{}, &ArticleTag{}, &Comment{}, &Favorite{}, &Topic{}, &TopicNode{},
+    &TopicTag{}, &UserLike{}, &Message{}, &SysConfig{}, &Link{},
+    &UserScoreLog{}, &OperateLog{}, &EmailCode{}, &CheckIn{}, &UserFollow{}, &UserFeed{}, &UserReport{},
+    &ForbiddenWord{}, &BDiv{}, &BDep{}, &JobPosition{}, &CRole{},
 }
 
 type Model struct {
@@ -44,6 +45,11 @@ type User struct {
 	ForbiddenEndTime int64            `gorm:"not null;default:0" json:"forbiddenEndTime" form:"forbiddenEndTime"`      // 禁言结束时间
 	CreateTime       int64            `json:"createTime" form:"createTime"`                                            // 创建时间
 	UpdateTime       int64            `json:"updateTime" form:"updateTime"`                                            // 更新时间
+	EmployeeID       string           `gorm:"size:10;" json:"employeeId" form:"employeeId"`                           // 员工ID
+	BDivision        string           `gorm:"size:20" json:"bDivision" form:"bDivision"`                               // 部门分区
+	BDepartment      string           `gorm:"size:20" json:"bDepartment" form:"bDepartment"`                           // 部门
+	Jobposition      string           `gorm:"size:20" json:"jobposition" form:"jobposition"`                           // 职位
+	CommunityRole    string           `gorm:"size:20" json:"communityRole" form:"communityRole"`                       // 社区角色
 }
 
 type UserToken struct {
@@ -168,6 +174,42 @@ type TopicTag struct {
 	LastCommentTime   int64 `gorm:"index:idx_topic_tag_last_comment_time" json:"lastCommentTime" form:"lastCommentTime"` // 最后回复时间
 	LastCommentUserId int64 `json:"lastCommentUserId" form:"lastCommentUserId"`                                          // 最后回复用户
 	CreateTime        int64 `json:"createTime" form:"createTime"`                                                        // 创建时间
+}
+
+// B_Div 部门分区表
+type BDiv struct {
+	Model
+	ID       string `gorm:"size:20;unique;not null" json:"id" form:"id"`       // ID，数字串
+	BDName   string `gorm:"size:20;not null" json:"bdName" form:"bdName"`       // 部门分区名称
+	CreateTime int64 `json:"createTime" form:"createTime"`                        // 创建时间
+	UpdateTime int64 `json:"updateTime" form:"updateTime"`                        // 更新时间
+}
+
+// B_Dep 部门表
+type BDep struct {
+	Model
+	ID       string `gorm:"size:20;unique;not null" json:"id" form:"id"`       // ID，数字串
+	DepName  string `gorm:"size:20;not null" json:"depName" form:"depName"`     // 部门名称
+	CreateTime int64 `json:"createTime" form:"createTime"`                        // 创建时间
+	UpdateTime int64 `json:"updateTime" form:"updateTime"`                        // 更新时间
+}
+
+// Job_Position 职位表
+type JobPosition struct {
+	Model
+	ID       string `gorm:"size:20;unique;not null" json:"id" form:"id"`       // ID，数字串
+	JbName   string `gorm:"size:20;not null" json:"jbName" form:"jbName"`       // 职位名称
+	CreateTime int64 `json:"createTime" form:"createTime"`                        // 创建时间
+	UpdateTime int64 `json:"updateTime" form:"updateTime"`                        // 更新时间
+}
+
+// C_Role 社区角色表
+type CRole struct {
+	Model
+	ID       string `gorm:"size:20;unique;not null" json:"id" form:"id"`       // ID，数字串
+	CroleName string `gorm:"size:20;not null" json:"croleName" form:"croleName"` // 社区角色名称
+	CreateTime int64 `json:"createTime" form:"createTime"`                        // 创建时间
+	UpdateTime int64 `json:"updateTime" form:"updateTime"`                        // 更新时间
 }
 
 // 用户点赞

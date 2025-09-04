@@ -178,11 +178,9 @@ func (s *articleService) Publish(userId int64, form models.CreateArticleForm) (a
 	}
 
 	err = sqls.DB().Transaction(func(tx *gorm.DB) error {
-		var (
-			tagIds []int64
-			err    error
-		)
-		if tagIds, err = repositories.TagRepository.GetOrCreates(tx, form.Tags); err != nil {
+		var tagIds []int64
+		tagIds, err = repositories.TagRepository.GetOrCreates(tx, form.Tags)
+		if err != nil {
 			return err
 		}
 		if err = repositories.ArticleRepository.Create(tx, article); err != nil {

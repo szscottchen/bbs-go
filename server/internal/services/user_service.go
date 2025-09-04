@@ -193,10 +193,15 @@ func (s *userService) GetByPhone(phone string) *models.User {
 }
 
 // SignUp 注册
-func (s *userService) SignUp(username, email, nickname, password, rePassword string) (*models.User, error) {
+func (s *userService) SignUp(username, email, nickname, password, rePassword, bDivision, bDepartment, jobposition, communityRole, employeeId string) (*models.User, error) {
 	username = strings.TrimSpace(username)
 	email = strings.TrimSpace(email)
 	nickname = strings.TrimSpace(nickname)
+	bDivision = strings.TrimSpace(bDivision)
+	bDepartment = strings.TrimSpace(bDepartment)
+	jobposition = strings.TrimSpace(jobposition)
+	communityRole = strings.TrimSpace(communityRole)
+	employeeId = strings.TrimSpace(employeeId) // 处理EmployeeID参数
 
 	// 验证昵称
 	if len(nickname) == 0 {
@@ -232,13 +237,18 @@ func (s *userService) SignUp(username, email, nickname, password, rePassword str
 	}
 
 	user := &models.User{
-		Username:   sqls.SqlNullString(username),
-		Email:      sqls.SqlNullString(email),
-		Nickname:   nickname,
-		Password:   passwd.EncodePassword(password),
-		Status:     constants.StatusOk,
-		CreateTime: dates.NowTimestamp(),
-		UpdateTime: dates.NowTimestamp(),
+		Username:      sqls.SqlNullString(username),
+		Email:         sqls.SqlNullString(email),
+		Nickname:      nickname,
+		Password:      passwd.EncodePassword(password),
+		Status:        constants.StatusOk,
+		CreateTime:    dates.NowTimestamp(),
+		UpdateTime:    dates.NowTimestamp(),
+		BDivision:     bDivision,
+		BDepartment:   bDepartment,
+		Jobposition:   jobposition,
+		CommunityRole: communityRole,
+		EmployeeID:    employeeId, // 设置EmployeeID字段
 	}
 
 	err = repositories.UserRepository.Create(sqls.DB(), user)
