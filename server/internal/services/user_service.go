@@ -193,7 +193,7 @@ func (s *userService) GetByPhone(phone string) *models.User {
 }
 
 // SignUp 注册
-func (s *userService) SignUp(username, email, nickname, password, rePassword string) (*models.User, error) {
+func (s *userService) SignUp(username, email, nickname, password, rePassword, employeeId string) (*models.User, error) {
 	username = strings.TrimSpace(username)
 	email = strings.TrimSpace(email)
 	nickname = strings.TrimSpace(nickname)

@@ -53,8 +53,9 @@ func (c *UserController) PostCreate() *web.JsonResult {
 	email := params.FormValue(c.Ctx, "email")
 	nickname := params.FormValue(c.Ctx, "nickname")
 	password := params.FormValue(c.Ctx, "password")
+	employeeId := params.FormValue(c.Ctx, "employeeId") // 显式获取
 
-	user, err := services.UserService.SignUp(username, email, nickname, password, password)
+	user, err := services.UserService.SignUp(username, email, nickname, password, password, employeeId)
 	if err != nil {
 		return web.JsonError(err)
 	}

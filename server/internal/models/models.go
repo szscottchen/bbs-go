@@ -25,6 +25,11 @@ type User struct {
 	Phone            sql.NullString   `gorm:"size:16;unique;" json:"phone" form:"phone"`                               // 电话
 	Username         sql.NullString   `gorm:"size:32;unique;" json:"username" form:"username"`                         // 用户名
 	Email            sql.NullString   `gorm:"size:128;unique;" json:"email" form:"email"`                              // 邮箱
+	EmployeeId       sql.NullString   `gorm:"size:10" json:"employeeId" form:"employeeId"`                             // Employee ID
+	BDivision        sql.NullString   `gorm:"size:20" json:"bDivision" form:"bDivision"`                               // Business Division
+	BDepartment      sql.NullString   `gorm:"size:20" json:"bDepartment" form:"bDepartment"`                           // Business Department
+	JobPosition      sql.NullString   `gorm:"size:20" json:"jobPosition" form:"jobPosition"`                           // Job Position
+	CommunityRole    sql.NullString   `gorm:"size:20" json:"communityRole" form:"communityRole"`                       // Community Role
 	EmailVerified    bool             `gorm:"not null;default:false" json:"emailVerified" form:"emailVerified"`        // 邮箱是否验证
 	Nickname         string           `gorm:"size:16;" json:"nickname" form:"nickname"`                                // 昵称
 	Avatar           string           `gorm:"type:text" json:"avatar" form:"avatar"`                                   // 头像

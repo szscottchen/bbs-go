@@ -28,6 +28,7 @@ func (c *LoginController) PostSignup() *web.JsonResult {
 		password           = c.Ctx.PostValueTrim("password")
 		rePassword         = c.Ctx.PostValueTrim("rePassword")
 		nickname           = c.Ctx.PostValueTrim("nickname")
+		employeeId         = c.Ctx.PostValueTrim("employeeId")
 		redirect           = c.Ctx.FormValue("redirect")
 	)
 	// 根据验证码协议版本校验验证码
@@ -40,7 +41,7 @@ func (c *LoginController) PostSignup() *web.JsonResult {
 			return web.JsonError(errs.CaptchaError())
 		}
 	}
-	user, err := services.UserService.SignUp(username, email, nickname, password, rePassword)
+	user, err := services.UserService.SignUp(username, email, nickname, password, rePassword, employeeId)
 	if err != nil {
 		return web.JsonError(err)
 	}

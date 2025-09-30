@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "namingConvention": "camelCase",
+    "maxLineLength": 100,
+    "importOrder": ["^@/(.*)$", "^[./]"],
+    "forbiddenPatterns": ["console.log", "debugger"]
+  }
+}
