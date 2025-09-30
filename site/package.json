@@ -30,6 +30,7 @@
     "@asika32764/vue-animate": "^3.0.2",
     "@nuxtjs/i18n": "^9.5.5",
     "@pinia/nuxt": "0.10.1",
+    "esbuild": "0.25.5",
     "go-captcha-vue": "^2",
     "html-editor": "workspace:*",
     "lodash.throttle": "^4.1.1",

@@ -28,7 +28,11 @@ func (c *LoginController) PostSignup() *web.JsonResult {
 		password           = c.Ctx.PostValueTrim("password")
 		rePassword         = c.Ctx.PostValueTrim("rePassword")
 		nickname           = c.Ctx.PostValueTrim("nickname")
-		employeeId         = c.Ctx.PostValueTrim("employeeId")
+		bDivision          = c.Ctx.PostValueTrim("bDivision")
+		bDepartment        = c.Ctx.PostValueTrim("bDepartment")
+		jobposition        = c.Ctx.PostValueTrim("jobposition")
+		communityRole      = c.Ctx.PostValueTrim("communityRole")
+		employeeId         = c.Ctx.PostValueTrim("employeeId") // 添加EmployeeID参数
 		redirect           = c.Ctx.FormValue("redirect")
 	)
 	// 根据验证码协议版本校验验证码
@@ -41,7 +45,7 @@ func (c *LoginController) PostSignup() *web.JsonResult {
 			return web.JsonError(errs.CaptchaError())
 		}
 	}
-	user, err := services.UserService.SignUp(username, email, nickname, password, rePassword, employeeId)
+	user, err := services.UserService.SignUp(username, email, nickname, password, rePassword, bDivision, bDepartment, jobposition, communityRole, employeeId)
 	if err != nil {
 		return web.JsonError(err)
 	}

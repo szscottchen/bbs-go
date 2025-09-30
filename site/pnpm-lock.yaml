@@ -17,6 +17,9 @@ importers:
       '@pinia/nuxt':
         specifier: 0.10.1
         version: 0.10.1(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.2)(vue@3.5.17(typescript@5.8.2)))
+      esbuild:
+        specifier: 0.25.5
+        version: 0.25.5
       go-captcha-vue:
         specifier: ^2
         version: 2.0.6(vue@3.5.17(typescript@5.8.2))
@@ -53,7 +56,7 @@ importers:
         version: 3.5.2(magicast@0.3.5)
       '@nuxtjs/eslint-module':
         specifier: 4.1.0
-        version: 4.1.0(eslint@9.21.0(jiti@2.4.2))(magicast@0.3.5)(vite@6.3.5(@types/node@22.15.33)(jiti@2.4.2)(sass@1.86.3)(terser@5.43.1)(yaml@2.8.0))(webpack@5.99.9)
+        version: 4.1.0(eslint@9.21.0(jiti@2.4.2))(magicast@0.3.5)(vite@6.3.5(@types/node@22.15.33)(jiti@2.4.2)(sass@1.86.3)(terser@5.43.1)(yaml@2.8.0))(webpack@5.99.9(esbuild@0.25.5))
       '@vueuse/core':
         specifier: 12.8.1
         version: 12.8.1(typescript@5.8.2)
@@ -7017,12 +7020,12 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nuxtjs/eslint-module@4.1.0(eslint@9.21.0(jiti@2.4.2))(magicast@0.3.5)(vite@6.3.5(@types/node@22.15.33)(jiti@2.4.2)(sass@1.86.3)(terser@5.43.1)(yaml@2.8.0))(webpack@5.99.9)':
+  '@nuxtjs/eslint-module@4.1.0(eslint@9.21.0(jiti@2.4.2))(magicast@0.3.5)(vite@6.3.5(@types/node@22.15.33)(jiti@2.4.2)(sass@1.86.3)(terser@5.43.1)(yaml@2.8.0))(webpack@5.99.9(esbuild@0.25.5))':
     dependencies:
       '@nuxt/kit': 3.17.5(magicast@0.3.5)
       chokidar: 3.6.0
       eslint: 9.21.0(jiti@2.4.2)
-      eslint-webpack-plugin: 4.2.0(eslint@9.21.0(jiti@2.4.2))(webpack@5.99.9)
+      eslint-webpack-plugin: 4.2.0(eslint@9.21.0(jiti@2.4.2))(webpack@5.99.9(esbuild@0.25.5))
       pathe: 1.1.2
       vite-plugin-eslint: 1.8.1(eslint@9.21.0(jiti@2.4.2))(vite@6.3.5(@types/node@22.15.33)(jiti@2.4.2)(sass@1.86.3)(terser@5.43.1)(yaml@2.8.0))
     transitivePeerDependencies:
@@ -9207,7 +9210,7 @@ snapshots:
 
   eslint-visitor-keys@4.2.1: {}
 
-  eslint-webpack-plugin@4.2.0(eslint@9.21.0(jiti@2.4.2))(webpack@5.99.9):
+  eslint-webpack-plugin@4.2.0(eslint@9.21.0(jiti@2.4.2))(webpack@5.99.9(esbuild@0.25.5)):
     dependencies:
       '@types/eslint': 8.56.12
       eslint: 9.21.0(jiti@2.4.2)
@@ -9215,7 +9218,7 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       schema-utils: 4.3.2
-      webpack: 5.99.9
+      webpack: 5.99.9(esbuild@0.25.5)
 
   eslint@9.21.0(jiti@2.4.2):
     dependencies:
@@ -11689,14 +11692,16 @@ snapshots:
       mkdirp: 3.0.1
       yallist: 5.0.0
 
-  terser-webpack-plugin@5.3.14(webpack@5.99.9):
+  terser-webpack-plugin@5.3.14(esbuild@0.25.5)(webpack@5.99.9(esbuild@0.25.5)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.43.1
-      webpack: 5.99.9
+      webpack: 5.99.9(esbuild@0.25.5)
+    optionalDependencies:
+      esbuild: 0.25.5
 
   terser@5.43.1:
     dependencies:
@@ -12155,7 +12160,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.99.9:
+  webpack@5.99.9(esbuild@0.25.5):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -12178,7 +12183,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.2
-      terser-webpack-plugin: 5.3.14(webpack@5.99.9)
+      terser-webpack-plugin: 5.3.14(esbuild@0.25.5)(webpack@5.99.9(esbuild@0.25.5))
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:
